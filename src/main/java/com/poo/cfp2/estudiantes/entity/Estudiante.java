@@ -1,18 +1,32 @@
 package com.poo.cfp2.estudiantes.entity;
 
+import com.fasterxml.jackson.annotation.JsonCreator; // esto no resuelve el importar
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.poo.cfp2.estudiantes.utils.NotaInvalidaException;
 
 
+
+@Entity
+@Table(name="estudiantes")
 public class Estudiante implements Comparable<Estudiante> {
 
+    //incluir id para la bd PK
+    @Id
+    @GeneratedValue(strategy= generationType.AUTO)
+    private Long id;
+
+    @Column(name="nombree", unique=false)
     private String nombre;
+
     private Integer nota=1;
 
     public Estudiante(String nombre) {
         this.nombre = nombre;
     }
 
-    public Estudiante(String nombre, Integer nota) {
+    @JsonCreator
+    public Estudiante(@JsonProperty Long id,@JsonProperty String nombre,@JsonProperty Integer nota) {
+        this.id=id;
         this.nombre = nombre;
         this.nota = nota;
     }

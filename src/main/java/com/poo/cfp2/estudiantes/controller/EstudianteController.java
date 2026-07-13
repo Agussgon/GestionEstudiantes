@@ -27,7 +27,7 @@ public class EstudianteController {
     }
 
     //métodos http
-    @GetMapping //("/{id}")
+    @GetMapping //("?id=1")
     public ResponseEntity<?> getEstudianteId(@RequestParam Long id){
         Estudiante estudianteBuscado=  estudianteService.getEstudiante(id);
 
@@ -38,6 +38,8 @@ public class EstudianteController {
         }
 
     }
+
+    //Especificar endpoint para no duplicar la ruta del método get
     @GetMapping("/lista")
     public ResponseEntity<?> getEstudiantes(){
         List<Estudiante> estudiantes = estudianteService.consultarEstudiantes();
@@ -49,15 +51,15 @@ public class EstudianteController {
     @PostMapping
     public ResponseEntity<?> createEstudiante( @RequestBody Estudiante estudiante  ){
 
-        //validaciones
+        //faltan validaciones
+
         Estudiante estudianteCreado= estudianteService.createEstudiante(estudiante);
+
         if(estudianteCreado == null){
             return  ResponseEntity.status(400).body("No se creo.");
         }else{
             return ResponseEntity.status(201).body("el estudiante se creo" + estudianteCreado); //200
         }
-
-
     }
 
 
