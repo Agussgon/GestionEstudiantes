@@ -3,11 +3,14 @@ package com.poo.cfp2.estudiantes.service;
 
 import com.poo.cfp2.estudiantes.controller.EstudianteController;
 import com.poo.cfp2.estudiantes.entity.Estudiante;
+import com.poo.cfp2.estudiantes.repository.EstudianteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -15,36 +18,42 @@ public class EstudianteService {
 
     //no creo el constructor -- implicito
 
-//    public EstudianteService() {
+    @Autowired
+    private EstudianteRepository estudianteRepository;
+
+    public EstudianteService(EstudianteRepository estudianteRepository) {
+        this.estudianteRepository = estudianteRepository;
+    }
+
+
+    //    public EstudianteService() {
 //    }
-
-    private Estudiante estudiante1= new Estudiante("Juan",7);
-    private Estudiante estudiante2= new Estudiante("Juli",6);
-    private List<Estudiante> estudiantes=
-            new ArrayList<>(Arrays.asList(estudiante1,estudiante2));
-
 
     public List<Estudiante> consultarEstudiantes()
     {
-        return estudiantes;
+        return estudianteRepository.findAll();
     }
 
 
     public Estudiante getEstudiante(Long id){
-        return estudiante1;
+        return estudianteRepository.getById(id);
     }
 
     public Estudiante createEstudiante(Estudiante estudiante){
+        //esta validación debería realizarse en el controlador
+
+        Estudiante nuevo=null;
+
         if(estudiante != null){
-            estudiantes.add(estudiante);
+            nuevo=estudianteRepository.save(estudiante);
         }
-        return estudiante;
+        return nuevo;
     }
     //eliminar
     public Boolean deleteEstudiante(Long id){
         //acá se implementa la lógica bscar por id antes
-
-        return true;
+       estudianteRepository.deleteById(id);
+       return estudianteRepository.existsById(id);
     }
 
 

@@ -65,6 +65,7 @@ public class EstudianteController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteEstudiante( @PathVariable Long id){
+        // de busqueda si no esta ya avisamos
         Boolean elimina=estudianteService.deleteEstudiante(id);
         if(elimina) return ResponseEntity.ok("eliminado.");
         else{ return ResponseEntity.status(404).body("no existe."); }

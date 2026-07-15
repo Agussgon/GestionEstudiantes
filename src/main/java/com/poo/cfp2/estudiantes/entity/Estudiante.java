@@ -3,7 +3,7 @@ package com.poo.cfp2.estudiantes.entity;
 import com.fasterxml.jackson.annotation.JsonCreator; // esto no resuelve el importar
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.poo.cfp2.estudiantes.utils.NotaInvalidaException;
-
+import jakarta.persistence.*;
 
 
 @Entity
@@ -12,10 +12,10 @@ public class Estudiante implements Comparable<Estudiante> {
 
     //incluir id para la bd PK
     @Id
-    @GeneratedValue(strategy= generationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    @Column(name="nombree", unique=false)
+    @Column(name="nombre", unique=false , length = 100)
     private String nombre;
 
     private Integer nota=1;
@@ -24,11 +24,16 @@ public class Estudiante implements Comparable<Estudiante> {
         this.nombre = nombre;
     }
 
-    @JsonCreator
-    public Estudiante(@JsonProperty Long id,@JsonProperty String nombre,@JsonProperty Integer nota) {
+    //@JsonCreator //@JsonProperty
+    public Estudiante( Long id, String nombre,Integer nota) {
         this.id=id;
         this.nombre = nombre;
         this.nota = nota;
+    }
+
+    // no olvida si queremos verlo
+    public Long getId() {
+        return id;
     }
 
     public Estudiante(){
