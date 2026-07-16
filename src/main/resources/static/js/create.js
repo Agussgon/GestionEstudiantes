@@ -1,8 +1,9 @@
 const body=document.querySelector("body")
 const button= document.querySelector("#registrar")
-const urlCreate= "https://estudiantes2026.onrender.com/estudiantes"  //"http://localhost:8080/estudiantes"
+const urlCreate=  "http://localhost:8081/estudiantes" //"https://estudiantes2026.onrender.com/estudiantes"
 const nombreEstudiante= document.querySelector("#nombre") //aca no se guarda el valor
 const notaEstudiante= document.getElementById("nota")
+const mensajeCreado= document.getElementById("creado")
 
 button.addEventListener('click',(e)=>{
 
@@ -12,14 +13,15 @@ e.preventDefault()
 
 //validar
 let estudiantePayload={
-       // id:null,
+      //  id:null,
         nombre:nombreEstudiante.value,
         nota: notaEstudiante.value
     }
 
 if(validar(estudiantePayload)){
 cargarEstudiante(estudiantePayload)
-setTimeout(()=>{document.getElementById("creado").innerHTML = "" },4000)
+
+setTimeout(()=>{document.getElementById("creado").innerHTML = "" },10000)
 
 }
 
@@ -34,7 +36,7 @@ function cargarEstudiante(estudiante) {
      body:JSON.stringify(estudiante)
     }
 
-    console.log(estudiante);
+    //console.log(estudiante);
 
 
     fetch(urlCreate,settings)
@@ -42,7 +44,10 @@ function cargarEstudiante(estudiante) {
         if (!response.ok) throw new Error("error")
         return response.json()
         } )
-        .then(mensaje => visualizar(mensaje))
+        .then(mensaje => {
+            console.log(mensaje)
+            
+            visualizar(mensaje)})
         .catch(error =>console.log(error))
 
 }
@@ -50,8 +55,8 @@ function cargarEstudiante(estudiante) {
 
 
 function visualizar(mensaje) {
-    template=`<h2>${mensaje.nombre}</h2>`
-    body.innerHTML+= `<div id="creado"> Estudiante creado:${mensaje.nota} </div> `
+    template=`<div > <h2>Estudiante ${mensaje.nombre}creado:</h2> ${mensaje.nota} </div> `
+    mensajeCreado.innerHTML+= template
 
 
 }

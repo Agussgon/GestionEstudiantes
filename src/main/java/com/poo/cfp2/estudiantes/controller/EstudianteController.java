@@ -58,7 +58,7 @@ public class EstudianteController {
         if(estudianteCreado == null){
             return  ResponseEntity.status(400).body("No se creo.");
         }else{
-            return ResponseEntity.status(201).body("el estudiante se creo" + estudianteCreado); //200
+            return ResponseEntity.status(201).body(estudianteCreado); //200
         }
     }
 
