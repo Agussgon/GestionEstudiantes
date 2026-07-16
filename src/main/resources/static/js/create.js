@@ -1,6 +1,6 @@
 const body=document.querySelector("body")
 const button= document.querySelector("#registrar")
-const urlCreate=  "http://localhost:8081/estudiantes" //"https://estudiantes2026.onrender.com/estudiantes"
+const urlCreate="https://gestionestudiantes-vi8f.onrender.com/estudiantes" //"http://localhost:8081/estudiantes"
 const nombreEstudiante= document.querySelector("#nombre") //aca no se guarda el valor
 const notaEstudiante= document.getElementById("nota")
 const mensajeCreado= document.getElementById("creado")

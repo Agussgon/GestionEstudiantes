@@ -1,5 +1,5 @@
 const container=document.querySelector("#container")
-const url= "http://localhost:8081/estudiantes/lista" //"https://estudiantes2026.onrender.com/estudiantes" 
+const url= "https://gestionestudiantes-vi8f.onrender.com/estudiantes/lista" //http://localhost:8081/estudiantes
 
 
 window.addEventListener('load',()=>{
