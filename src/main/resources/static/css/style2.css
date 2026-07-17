@@ -1,0 +1,68 @@
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 10px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2vw;
+    
+}
+
+#container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6e2e2;
+    border: solid 3px;
+    border-radius: 5%;
+    margin: 10px;
+    width: 15vw;
+   
+}
+
+#form{
+    width: 70%;
+    border: #601a6c solid 2px;
+    border-radius: 5%;
+    background-color: #a7b4a2;
+    margin-top: 5%;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+ 
+
+
+}
+
+#container-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: #962020 solid 4px;*/
+}
+
+#boton-index, a{
+ text-decoration: none;
+ color: #e3d4e6;
+
+}
+
+#inicio{
+   margin-top: 5%;
+
+}
+
+h1{
+    text-align: center;
+}
